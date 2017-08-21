@@ -12,7 +12,7 @@
     "watch:test": "nodemon --exec 'npm run test'",
     "lint": "xo --env=node --env=mocha"
   },
-  "keywords": [],
+  "keywords": ["monk", "monk-middleware"],
   "author": "george@thechatshop.co.uk",
   "license": "MIT",
   "devDependencies": {
