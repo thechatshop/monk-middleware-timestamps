@@ -25,7 +25,9 @@
     "globals": [
       "it",
       "before",
+      "beforeEach",
       "after",
+      "afterEach",
       "describe"
     ],
     "rules": {

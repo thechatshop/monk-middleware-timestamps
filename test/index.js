@@ -9,16 +9,12 @@ const addTimestamps = require('../src');
 
 db.addMiddleware(addTimestamps);
 describe('Middleware timestamps', () => {
-	let dummyCollection;
-	before(() => {
-		return db.create('dummy');
-	});
+	const dummyCollection = db.get('dummy');
 	after(() => {
 		return dummyCollection.drop();
 	});
 	it('insert method adds `createdAt` property if not exists', () => {
 		// Test an object
-		dummyCollection = db.get('dummy');
 		return dummyCollection.insert({some: 'object'})
 			.then(doc => {
 				expect(doc).to.have.property('createdAt');
