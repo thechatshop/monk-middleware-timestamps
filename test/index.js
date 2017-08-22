@@ -11,10 +11,11 @@ db.addMiddleware(addTimestamps);
 describe('Middleware timestamps', () => {
 	let dummyCollection;
 	before(() => {
+		db.create('dummy');
 		dummyCollection = db.get('dummy');
 	});
 	after(() => {
-		return dummyCollection.drop();
+		dummyCollection.drop();
 	});
 	it('insert method adds `createdAt` property if not exists', () => {
 		// Test an object
