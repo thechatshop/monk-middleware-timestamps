@@ -9,16 +9,13 @@ const addTimestamps = require('../src');
 
 db.addMiddleware(addTimestamps);
 describe('Middleware timestamps', () => {
-	let dummyCollection;
-	before(() => {
-		dummyCollection = db.get('dummy');
-	});
+	const dummyCollection = db.get('dummy');
 	after(() => {
 		return dummyCollection.drop();
 	});
 	it('insert method adds `createdAt` property if not exists', () => {
 		// Test an object
-		dummyCollection.insert({some: 'object'})
+		return dummyCollection.insert({some: 'object'})
 			.then(doc => {
 				expect(doc).to.have.property('createdAt');
 				expect(doc.createdAt).to.be.a('Date');
@@ -26,8 +23,10 @@ describe('Middleware timestamps', () => {
 				expect(doc.some).to.equal('object');
 			})
 			.catch(console.error);
+	});
+	it('insert method adds `createdAt` property on array', () => {
 		// Test an array of objects
-		dummyCollection.insert([{another: 'object'}, {yet: 'another'}])
+		return dummyCollection.insert([{another: 'object'}, {yet: 'another'}])
 			.then(docs => {
 				docs.forEach(doc => {
 					expect(doc).to.have.property('createdAt');
@@ -37,7 +36,7 @@ describe('Middleware timestamps', () => {
 			.catch(console.error);
 	});
 	it('update method updates/adds `updatedAt`', () => {
-		dummyCollection.update({some: 'object'}, {some: 'changedObject'})
+		return dummyCollection.update({some: 'object'}, {some: 'changedObject'})
 			.then(() => {
 				dummyCollection.findOne({some: 'changedObject'})
 					.then(doc => {
@@ -50,7 +49,7 @@ describe('Middleware timestamps', () => {
 			.catch(console.error);
 	});
 	it('findOneAndUpdate method updates/adds `updatedAt`', () => {
-		dummyCollection.findOneAndUpdate({another: 'object'}, {another: 'changedHere'})
+		return dummyCollection.findOneAndUpdate({another: 'object'}, {another: 'changedHere'})
 			.then(doc => {
 				expect(doc).to.be.an('object');
 				expect(doc).to.have.property('updatedAt');

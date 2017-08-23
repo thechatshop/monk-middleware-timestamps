@@ -15,7 +15,7 @@ const getTypeOf = object => {
 };
 
 const updateTimestamp = propertyPath => data => {
-	// Only add/update the createdAt timestamp if the it does not exist
+	// Only add/update the createdAt timestamp if it does not exist
 	if (propertyPath.includes('createdAt') && has(data, propertyPath)) {
 		return;
 	}
