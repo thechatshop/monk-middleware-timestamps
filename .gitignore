@@ -146,3 +146,5 @@ Package Control.system-ca-bundle
 Package Control.cache/
 Package Control.ca-certs/
 bh_unicode_properties.cache
+
+.envrc

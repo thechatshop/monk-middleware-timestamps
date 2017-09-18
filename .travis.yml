@@ -1,7 +1,15 @@
 language: node_js
 node_js:
-  - "7"
+- '8'
 services:
-  - mongodb
+- mongodb
 script:
-  - npm test
+- npm test
+deploy:
+  provider: npm
+  email: dev@thechatshop.com
+  api_key:
+    secure: xrp7JqMLzdnQRjhOKzD9eaMYHyG0c/1U8oFu1LkQ5JP5rJ//FEknltgB48Nu8y+kGdRkXfan63HXjSONl0vj/qzFNrXQ1tXA/Tn4008Fy6X1fyjVrT9mvbyXHnQ769HfRmPJIUY02PkqdQ8ap0ABB5sMHL4CPvMO/SnhyTPamiwdn4OUJipFBrdjs6jpZu6faF+0Qmgv+5qWsHMfoJn4vyeYZ3OZsPj3H6ZZhBUxY2oHFQ4qkyL7drKPL3bJAJKttcmLdWjzecjJK+dJxQlZrm9rP7q9EW8Qtt5XsweF3Uorab+oLbck+EdS5ASxl+RWQTHi5hzTWxUPQIVDajnMvDY5pgrh5ZM39iUXNjfucFBfyoXEnHXsR8+rqVUEMKZNnTcFSGKijFir+dX0cofbrVtBTga1wrPQfltAEnfT4ZuT5rspnCboDWShzj50cKwN8FsEoYYDlZVZ8UbFxGAoRKkOREUm9f1tTmloBY5l9xoYyfKlyqqVwQVVSPrfzJTGUk9nKLxl1VM/jxI5hMVLalxsDo4Irc2ZhSawVvFNFdj45V69SgR/XX1DRrY7Kyn+DH1qzAgWp+Xpt+haT9taxyfW0nm/jVCUj19IdvUrKjiXz/1t5SLHTOK8QMMXd5vpQpDUToyXDrbNaKM/5h6c4rqTtARDT3vqwCdGAcIYzho=
+  on:
+    tags: true
+    repo: thechatshop/monk-middleware-timestamps
